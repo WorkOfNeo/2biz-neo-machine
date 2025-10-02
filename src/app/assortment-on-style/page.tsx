@@ -16,6 +16,7 @@ export default function AssortmentOnStylePage() {
   const [listItems, setListItems] = useState<any[]>([]);
   const [listRunning, setListRunning] = useState(false);
   const [listOnly, setListOnly] = useState(true);
+  const [seasonText, setSeasonText] = useState("");
   const [detailRunning, setDetailRunning] = useState(false);
   const [detailLogs, setDetailLogs] = useState<{ t: string; m: string }[]>([]);
   const [detailItems, setDetailItems] = useState<any[]>([]);
@@ -161,7 +162,7 @@ export default function AssortmentOnStylePage() {
       const res = await fetch("/api/spy/assortment-on-style?stream=1", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ limit: rowLimit, skipDetails: listOnly }),
+        body: JSON.stringify({ limit: rowLimit, skipDetails: listOnly, seasonText }),
       });
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();
@@ -341,6 +342,13 @@ export default function AssortmentOnStylePage() {
               value={rowLimit}
               onChange={(e) => setRowLimit(parseInt(e.target.value || "0", 10))}
               placeholder="Rows to process"
+            />
+            <input
+              type="text"
+              className="w-56 rounded border px-2 py-1 text-sm"
+              value={seasonText}
+              onChange={(e) => setSeasonText(e.target.value)}
+              placeholder="Season (e.g., 25 WINTER)"
             />
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={listOnly} onChange={(e) => setListOnly(e.target.checked)} />

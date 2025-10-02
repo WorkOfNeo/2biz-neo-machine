@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar, MobileSidebar } from "@/components/sidebar";
+import "react-toastify/dist/ReactToastify.css";
+import ToastProvider from "@/components/toast-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +37,9 @@ export default function RootLayout({
                 <div className="text-sm font-medium">NEO 2BIZ MACHINE</div>
               </header>
               <main className="flex-1 p-4 md:p-6">
-                {children}
+                <ToastProvider>
+                  {children}
+                </ToastProvider>
               </main>
             </div>
           </div>

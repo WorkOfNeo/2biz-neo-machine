@@ -24,6 +24,10 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/check-assortments", label: "Check Purchases" },
   { href: "/assortment-on-style", label: "Assortment on Style" },
+  { href: "/eta-week", label: "ETA WEEK" },
+  { href: "/mapping", label: "Mapping" },
+  { href: "/chadt", label: "Chad(t)" },
+  { href: "/styles", label: "Styles" },
   { href: "/reports", label: "Reports" },
   { href: "/settings", label: "Settings" },
 ];
